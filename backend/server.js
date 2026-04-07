@@ -17,11 +17,13 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyparser.json())
+
 app.use(cors({
-   origin: [
+    origin: [
         "http://localhost:5173",
-        "https://safepass-backend-wtcu.onrender.com"
+        "https://safepass-frontend-5oqy.onrender.com"
     ],
+    methods: ["GET", "POST", "DELETE"],
 }));
 
 // Get all the passwords
