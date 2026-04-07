@@ -17,7 +17,9 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyparser.json())
-app.use(cors())
+app.use(cors({
+  origin: "https://safepass-backend-wtcu.onrender.com"
+}));
 
 // Get all the passwords
 app.get('/', async (req, res) => {
