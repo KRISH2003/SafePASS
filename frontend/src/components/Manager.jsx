@@ -10,7 +10,7 @@ const Manager = () => {
     const [form, setform] = useState({ site: "", username: "", password: "" })
     const [passwordArray, setPasswordArray] = useState([])
 
-    const BASE_URL = "https://safepass-backend.onrender.com";
+    const BASE_URL = "https://safepass-backend-wtcu.onrender.com";
 
     const getPasswords = async () => {
         let req = await fetch(`${BASE_URL}/`)
