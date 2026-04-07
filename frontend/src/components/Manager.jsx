@@ -10,8 +10,10 @@ const Manager = () => {
     const [form, setform] = useState({ site: "", username: "", password: "" })
     const [passwordArray, setPasswordArray] = useState([])
 
+    const BASE_URL = "https://safepass-backend.onrender.com";
+
     const getPasswords = async () => {
-        let req = await fetch("http://localhost:3000/")
+        let req = await fetch(`${BASE_URL}/`)
         let passwords = await req.json()
         setPasswordArray(passwords)
     }
@@ -57,7 +59,7 @@ const Manager = () => {
 
             // Only delete if editing
             if (form.id) {
-                await fetch("http://localhost:3000/", {
+                await fetch(`${BASE_URL}/`, {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id: form.id })
@@ -70,7 +72,7 @@ const Manager = () => {
             setPasswordArray([...passwordArray, newPassword]);
 
             // Save to DB
-            await fetch("http://localhost:3000/", {
+            await fetch(`${BASE_URL}/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newPassword)
@@ -88,7 +90,7 @@ const Manager = () => {
         if (c) {
             setPasswordArray(passwordArray.filter(item => item.id !== id))
 
-            await fetch("http://localhost:3000/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) })
+            await fetch(`${BASE_URL}/`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) })
 
             toast('Password Deleted!', {
                 position: "top-right",
